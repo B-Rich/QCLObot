@@ -1,0 +1,306 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>explanation of QCLObot YAML File &mdash; QCLObot tutorial 2016.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2016.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="top" title="QCLObot tutorial 2016.0 documentation" href="index.html" />
+    <link rel="next" title="API for QCLObot" href="90_API.html" />
+    <link rel="prev" title="Setting up calculation model" href="20_setup_model.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="90_API.html" title="API for QCLObot"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="20_setup_model.html" title="Setting up calculation model"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">QCLObot tutorial 2016.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">explanation of QCLObot YAML File</a><ul>
+<li><a class="reference internal" href="#vars-section">vars section</a></li>
+<li><a class="reference internal" href="#tasks-section">tasks section</a><ul>
+<li><a class="reference internal" href="#condition">condition</a><ul>
+<li><a class="reference internal" href="#with-items">with_items</a></li>
+<li><a class="reference internal" href="#when">when</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task">task</a><ul>
+<li><a class="reference internal" href="#debug">debug</a></li>
+<li><a class="reference internal" href="#mail">mail</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#frame">frame</a><ul>
+<li><a class="reference internal" href="#frame-definition">frame definition</a><ul>
+<li><a class="reference internal" href="#name-mandatory">name(mandatory)</a></li>
+<li><a class="reference internal" href="#fragments">fragments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#frame-action">frame action</a></li>
+<li><a class="reference internal" href="#calculation-configuration">calculation configuration</a></li>
+<li><a class="reference internal" href="#default-frame">default frame</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="20_setup_model.html"
+                        title="previous chapter">Setting up calculation model</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="90_API.html"
+                        title="next chapter">API for QCLObot</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/80_keyword.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="explanation-of-qclobot-yaml-file">
+<h1>explanation of QCLObot YAML File<a class="headerlink" href="#explanation-of-qclobot-yaml-file" title="Permalink to this headline">¶</a></h1>
+<p>QCLObot playbook is separated by following two parts:
+- vars section</p>
+<blockquote>
+<div>definition of variables</div></blockquote>
+<ul class="simple">
+<li>tasks section
+definition of task for general and for frame molecule</li>
+</ul>
+<div class="section" id="vars-section">
+<h2>vars section<a class="headerlink" href="#vars-section" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tasks-section">
+<h2>tasks section<a class="headerlink" href="#tasks-section" title="Permalink to this headline">¶</a></h2>
+<p>The tasks section is consist of three parts:
+- condition
+- task
+- frame definition</p>
+<div class="section" id="condition">
+<h3>condition<a class="headerlink" href="#condition" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="with-items">
+<h4>with_items<a class="headerlink" href="#with-items" title="Permalink to this headline">¶</a></h4>
+<p>repeat the task.</p>
+</div>
+<div class="section" id="when">
+<h4>when<a class="headerlink" href="#when" title="Permalink to this headline">¶</a></h4>
+<p>do the task if the condition is satisfied.</p>
+</div>
+</div>
+<div class="section" id="task">
+<h3>task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="debug">
+<h4>debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="mail">
+<h4>mail<a class="headerlink" href="#mail" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="frame">
+<h3>frame<a class="headerlink" href="#frame" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="frame-definition">
+<h4>frame definition<a class="headerlink" href="#frame-definition" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="name-mandatory">
+<h5>name(mandatory)<a class="headerlink" href="#name-mandatory" title="Permalink to this headline">¶</a></h5>
+<p>All frame require the name.
+Based of this name value, the working directory is created on the current directory.</p>
+</div>
+<div class="section" id="fragments">
+<h5>fragments<a class="headerlink" href="#fragments" title="Permalink to this headline">¶</a></h5>
+<p>A frame molecule consists of fragment(s).
+Fragment is defined by following keywords.
+All fragment requires the &#8220;name&#8221; attribute, which is used as name of the fragment.</p>
+<ul class="simple">
+<li>atomlist</li>
+</ul>
+<p>&#8216;atomlist&#8217; directive makes fragment from atom list</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">atomlist</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;N</span><span class="nv">  </span><span class="s">0.000000</span><span class="nv">   </span><span class="s">0.000000</span><span class="nv">   </span><span class="s">0.000000&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;N</span><span class="nv">  </span><span class="s">1.000000</span><span class="nv">   </span><span class="s">0.000000</span><span class="nv">   </span><span class="s">0.000000&quot;</span>
+</pre></div>
+</div>
+<p>The atomlist is an array object.
+Each atom is defined by string separated white space,
+or by array object as following:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">atomlist</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="nv">O</span><span class="p p-Indicator">,</span> <span class="nv">-7.328</span><span class="p p-Indicator">,</span> <span class="nv">-30.909</span><span class="p p-Indicator">,</span>  <span class="nv">17.923</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="nv">H</span><span class="p p-Indicator">,</span> <span class="nv">-6.026</span><span class="p p-Indicator">,</span> <span class="nv">-31.757</span><span class="p p-Indicator">,</span>  <span class="nv">17.909</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>add_CH3</li>
+</ul>
+<p>If the keyword is defined as &#8220;yes&#8221;,
+a methyl group is add as fragment.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">displacement</p>
+<p>This atom is substitute with methyl carbon.
+This value is specified by string as Bridge path.</p>
+</li>
+<li><p class="first">root</p>
+<p>This atom is indicated to the next atom of the displacement atom.
+This value is specified by string as Bridge path.</p>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>add_ACE</li>
+<li>add_NME</li>
+<li>reference</li>
+</ul>
+<p>The fragment is created by using the previous calculation result.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">frame</p>
+<p>This value indicates the name of the frame molecule.</p>
+</li>
+<li><p class="first">fragment</p>
+<p>The name of the fragment in the frame molecule.</p>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>brd_select</li>
+</ul>
+<p>The group which is indicated by the value of &#8220;brd_select&#8221; keyword is add as fragment.
+This value is specified by string as Bridge path.</p>
+</div>
+</div>
+<div class="section" id="frame-action">
+<h4>frame action<a class="headerlink" href="#frame-action" title="Permalink to this headline">¶</a></h4>
+<p>The following keyword indicates for the frame object to do.</p>
+<ul class="simple">
+<li>pre_scf</li>
+</ul>
+<p>If &#8220;pre_scf&#8221; is defined as &#8220;yes&#8221;,
+then the processing calculation before SCF loop is carried out in the frame molecule.</p>
+<ul class="simple">
+<li>guess</li>
+</ul>
+<p>Creation of the initial guess is executed.
+How to create guess depends on the value of &#8220;guess&#8221; keyword.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">harris</p>
+<p>The initial guess is created by using Harris functional method.
+This is default.</p>
+</li>
+<li><p class="first">QCLO</p>
+<p>The inigial guess is made of the QCLOs of corresponding fragments by using QCLO method.
+If the QCLO of the child fragment has not been created,
+it is computed automatically.</p>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>sp</li>
+</ul>
+<p>If the &#8220;sp&#8221; is defined as &#8220;yes&#8221;,
+the single-point calculation of the frame molecule is carried out.
+If &#8220;pre_scf&#8221; and &#8220;guess&#8221; keywords are not indicated,
+these operations are automatically performed.</p>
+<ul class="simple">
+<li>gradient</li>
+</ul>
+<p>If the &#8220;gradient&#8221; is defined as &#8220;yes&#8221;,
+the energy gradient is gained in the frame molecule.</p>
+</div>
+<div class="section" id="calculation-configuration">
+<h4>calculation configuration<a class="headerlink" href="#calculation-configuration" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="default-frame">
+<h4>default frame<a class="headerlink" href="#default-frame" title="Permalink to this headline">¶</a></h4>
+<p>if the name section is &#8216;default&#8217;, this frame parameters are used as default values.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="90_API.html" title="API for QCLObot"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="20_setup_model.html" title="Setting up calculation model"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">QCLObot tutorial 2016.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Toshiyuki HIRANO.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
+</html>
